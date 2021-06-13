@@ -3,13 +3,11 @@ package TopNDonors;
 
 import java.util.Scanner;
 
-public class Merging
-{
+public class Merging {
+    //Create vector Donor with it's Variables
+//    static Donor Array[];
 
-    static Donor Array[];
-
-    static class Donor
-    {
+    static class Donor {
         String name, lastName;
         double amountDonated;
     }
@@ -17,8 +15,7 @@ public class Merging
 
     // First subArray is arr[l TO Rpos]
     // Second subArray is arr[Rpos+1 TO RightEnd]
-    static void Merge(Donor[] array, int Lpos, int Rpos, int RightEnd)
-    {
+    static void Merge(Donor[] array, int Lpos, int Rpos, int RightEnd) {
         // Find sizes of two subArrays to be merged
         int n1 = Rpos - Lpos + 1;
         int n2 = RightEnd - Rpos;
@@ -28,10 +25,9 @@ public class Merging
         Donor[] Right = new Donor[n2];
 
         //Copy data to temp Arrays
-        System.arraycopy(array, Lpos, Left, 0,n1);
+        System.arraycopy(array, Lpos, Left, 0, n1);
 
-        for(int j = 0; j < n2; ++j)
-        {
+        for (int j = 0; j < n2; ++j) {
             Right[j] = array[Rpos + 1 + j];
         }
 
@@ -43,15 +39,11 @@ public class Merging
 
 
         int mergedSubarray = Lpos;
-        while (i < n1 && j < n2)
-        {
-            if (Left[i].amountDonated <= Right[j].amountDonated)
-            {
+        while (i < n1 && j < n2) {
+            if (Left[i].amountDonated <= Right[j].amountDonated) {
                 array[mergedSubarray] = Left[i];
                 i++;
-            }
-            else
-            {
+            } else {
                 array[mergedSubarray] = Right[j];
                 j++;
             }
@@ -59,30 +51,26 @@ public class Merging
         }
 
         /* Copy remaining elements of L[] if any */
-        while (i < n1)
-        {
+        while (i < n1) {
             array[mergedSubarray] = Left[i];
             i++;
             mergedSubarray++;
         }
 
         /* Copy remaining elements of Right[] if any */
-        while (j < n2)
-        {
+        while (j < n2) {
             array[mergedSubarray] = Right[j];
             j++;
             mergedSubarray++;
         }
     }
 
-    // Main function that sorts array[Left To Right] using
-    // merge()
-    static void sort(Donor[] arr, int l, int r)
-    {
-        if (l < r)
-        {
+
+    // Function that sorts array[LeftToRight] using Merge()
+    static void sort(Donor[] arr, int l, int r) {
+        if (l < r) {
             // Find the center point
-            int center =l+ (r-l)/2;
+            int center = l + (r - l) / 2;
 
             // Sort first and second point
             sort(arr, l, center);
@@ -93,26 +81,23 @@ public class Merging
         }
     }
 
-    public static void main(String[] args)
-    {
-        Scanner input=new Scanner(System.in);
-        int numberOfStudents= input.nextInt();
-        int numberOfStudentsDisplayed= input.nextInt();
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int numberOfStudents = input.nextInt();
+        int numberOfStudentsDisplayed = input.nextInt();
         Donor[] arr = new Donor[numberOfStudents];
 
-        for(int i=0;i<numberOfStudents;i++)
-        {
-            arr[i]=new Donor();
-            arr[i].name= input.next();
+        for (int i = 0; i < numberOfStudents; i++) {
+            arr[i] = new Donor();
+            arr[i].name = input.next();
             arr[i].lastName = input.next();
             arr[i].amountDonated = input.nextDouble();
         }
 
-        sort(arr,0,numberOfStudents-1);
+        sort(arr, 0, numberOfStudents - 1);
 
-        for(int j=numberOfStudents-1;j>=numberOfStudents-numberOfStudentsDisplayed;j--)
-        {
-            System.out.println(arr[j].name+" "+arr[j].lastName +" "+arr[j].amountDonated);
+        for (int j = numberOfStudents - 1; j >= numberOfStudents - numberOfStudentsDisplayed; j--) {
+            System.out.println(arr[j].name + " " + arr[j].lastName + " " + arr[j].amountDonated);
         }
 
     }

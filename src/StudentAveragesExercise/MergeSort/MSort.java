@@ -4,8 +4,8 @@ package StudentAveragesExercise.MergeSort;
 import java.util.*;
 
 public class MSort {
-    static class Student
-    {
+    //Create vector Student with it's Variables
+    static class Student {
         String name, lastName;
         double avg;
     }
@@ -13,8 +13,7 @@ public class MSort {
 
     // First subArray is arr[l To Rpos]
     // Second subArray is arr[Rpos+1 To RightEnd]
-    static void merge(Student[] array, int Lpos, int Rpos, int RightEnd)
-    {
+    static void merge(Student[] array, int Lpos, int Rpos, int RightEnd) {
         // Find sizes of two subarrays to be merged
         int n1 = Rpos - Lpos + 1;
         int n2 = RightEnd - Rpos;
@@ -24,10 +23,9 @@ public class MSort {
         Student[] rightTemp = new Student[n2];
 
         /*Copy data to temp arrays*/
-        System.arraycopy(array, Lpos, leftTemp, 0,n1);
+        System.arraycopy(array, Lpos, leftTemp, 0, n1);
 
-        for(int j = 0; j < n2; ++j)
-        {
+        for (int j = 0; j < n2; ++j) {
             rightTemp[j] = array[Rpos + 1 + j];
         }
 
@@ -38,15 +36,11 @@ public class MSort {
         int i = 0, j = 0;
 
         int mergedSubArray = Lpos;
-        while (i < n1 && j < n2)
-        {
-            if (leftTemp[i].avg <= rightTemp[j].avg)
-            {
+        while (i < n1 && j < n2) {
+            if (leftTemp[i].avg <= rightTemp[j].avg) {
                 array[mergedSubArray] = leftTemp[i];
                 i++;
-            }
-            else
-            {
+            } else {
                 array[mergedSubArray] = rightTemp[j];
                 j++;
             }
@@ -54,16 +48,14 @@ public class MSort {
         }
 
         /* Copy remaining elements of leftTemp[] if any */
-        while (i < n1)
-        {
+        while (i < n1) {
             array[mergedSubArray] = leftTemp[i];
             i++;
             mergedSubArray++;
         }
 
         /* Copy remaining elements of rightTemp[] if any */
-        while (j < n2)
-        {
+        while (j < n2) {
             array[mergedSubArray] = rightTemp[j];
             j++;
             mergedSubArray++;
@@ -71,12 +63,10 @@ public class MSort {
     }
 
     // Function that sorts array[LeftToRight] using Merge()
-    static void sort(Student[] arr, int left, int right)
-    {
-        if (left < right)
-        {
+    static void sort(Student[] arr, int left, int right) {
+        if (left < right) {
             // Find the center point
-            int center =left+ (right-left)/2;
+            int center = left + (right - left) / 2;
 
             // Sort first and second halves
             sort(arr, left, center);

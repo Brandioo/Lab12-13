@@ -38,7 +38,6 @@ public class MSort {
     }
 
 
-
     // Main function that sorts arr[l..r] using
     // Merge()
     static void sort(int TmpArray[], int Left, int Right) {
@@ -55,10 +54,6 @@ public class MSort {
             Merge(TmpArray, Left, Center + 1, Right);
         }
     }
-
-
-
-
 
 
     static void Mergesort(int N) {

@@ -5,13 +5,13 @@ package StudentAveragesExercise.MergeSort;
 import java.util.Scanner;
 
 public class QuickSort {
-
+    //Create vector Student with it's Variables
     static class Student {
         String name, lastName;
         double average;
     }
 
-
+    //Swap Function
     static void swap(Student[] array, int i, int j) {
         Student temp = array[i];
         array[i] = array[j];

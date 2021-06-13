@@ -4,13 +4,13 @@ package TopNDonors;
 import java.util.Scanner;
 
 public class QuickSort {
-
+    //Create vector Donor with it's Variables
     static class Donor {
         String name, surname;
         double donated;
     }
 
-
+    //Swap Function
     static void swap(Donor[] donors, int i, int j) {
         double temp = donors[i].donated;
         donors[i].donated = donors[j].donated;
