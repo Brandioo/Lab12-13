@@ -102,7 +102,6 @@ public class Merging
 
         for(int i=0;i<numberOfStudents;i++)
         {
-            double sum=0;
             arr[i]=new Donor();
             arr[i].name= input.next();
             arr[i].lastName = input.next();

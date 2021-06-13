@@ -1,3 +1,4 @@
+//Brand BINF-A
 package StudentAveragesExercise.MergeSort;
 
 
@@ -6,62 +7,57 @@ import java.util.Scanner;
 public class QuickSort {
 
     static class Student {
-        String name, surname;
-        double avg;
+        String name, lastName;
+        double average;
     }
 
 
-    static void swap(Student[] arr, int i, int j) {
-        double temp = arr[i].avg;
-        arr[i].avg = arr[j].avg;
-        arr[j].avg = temp;
+    static void swap(Student[] array, int i, int j) {
+        Student temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 
-    static int partition(Student[] arr, int low, int high) {
+    static int partition(Student[] array, int low, int high) {
 
-        // pivot
-        double pivot = arr[high].avg;
+        // index
+        double index = array[high].average;
 
-        // Index of smaller element and
-        // indicates the right position
-        // of pivot found so far
+        // Index of smaller element indicates the right position of index found so far
         int i = (low - 1);
 
         for (int j = low; j <= high - 1; j++) {
 
-            // If current element is smaller
-            // than the pivot
-            if (arr[j].avg < pivot) {
+            // If current element is smaller than the index
+            if (array[j].average < index) {
 
-                // Increment index of
-                // smaller element
+                // Increment index of smaller element
                 i++;
-                swap(arr, i, j);
+                swap(array, i, j);
             }
         }
-        swap(arr, i + 1, high);
+        swap(array, i + 1, high);
         return (i + 1);
     }
 
-    /* The main function that implements QuickSort
-              arr[] --> Array to be sorted,
-              low --> Starting index,
-              high --> Ending index
-     */
-    static void sort(Student[] arr, int low, int high) {
+
+    static void sort(Student[] array, int low, int high) {
         if (low < high) {
 
-            // pi is partitioning index, arr[p]
-            // is now at right place
-            int pi = partition(arr, low, high);
+            // pi is partitioning index, array[p] is now at right place
+            int pi = partition(array, low, high);
 
-            // Separately sort elements before
-            // partition and after partition
-            sort(arr, low, pi - 1);
-            sort(arr, pi + 1, high);
+            // Separately sort elements before partition & after partition
+            sort(array, low, pi - 1);
+            sort(array, pi + 1, high);
         }
     }
 
+       /*
+              array[] --> Array to be sorted,
+              low --> Starting index,
+              high --> Ending index
+     */
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -72,17 +68,17 @@ public class QuickSort {
             double sum = 0;
             arr[i] = new Student();
             arr[i].name = input.next();
-            arr[i].surname = input.next();
+            arr[i].lastName = input.next();
             for (int j = 0; j < 4; j++) {
                 sum += input.nextInt();
             }
-            arr[i].avg = sum / 4;
+            arr[i].average = sum / 4;
         }
 
         sort(arr, 0, n - 1);
 
         for (int j = n - 1; j >= n - m; j--) {
-            System.out.println(arr[j].name + " " + arr[j].surname + " " + arr[j].avg);
+            System.out.println(arr[j].name + " " + arr[j].lastName + " " + arr[j].average);
         }
 
     }

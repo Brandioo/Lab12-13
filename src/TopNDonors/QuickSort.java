@@ -61,7 +61,6 @@ public class QuickSort {
         Donor[] array = new Donor[n];
 
         for (int i = 0; i < n; i++) {
-            double sum = 0;
             array[i] = new Donor();
             array[i].name = sc.next();
             array[i].surname = sc.next();

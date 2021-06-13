@@ -1,41 +1,35 @@
 package StudentAveragesExercise.MergeSort;
 
+import HighestAverage.HighestAVG;
+
 import java.util.*;
 
 public class MSort {
-    //Declaration of Student
-    static class Student {
-        String name, surname;
+    static class Student
+    {
+        String name, lastName;
         double avg;
     }
 
-    static int Array[];
-
-    public static void exchange(int i, int j) {
-        int t = Array[i];
-        Array[i] = Array[j];
-        Array[j] = t;
-    }
-
-    // Merges two subarrays of arr[].
-    // First subarray is arr[l..m]
-    // Second subarray is arr[m+1..r]
-    static void Merge(Student[] arr, int l, int m, int r)
+    // Merges two subarrays of array[].
+    // First subarray is array[Lpos..Rpos]
+    // Second subarray is array[Rpos+1..RightEnd]
+    static void merge(Student[] array, int Lpos, int Rpos, int RightEnd)
     {
         // Find sizes of two subarrays to be merged
-        int n1 = m - l + 1;
-        int n2 = r - m;
+        int n1 = Rpos - Lpos + 1;
+        int n2 = RightEnd - Rpos;
 
         /* Create temp arrays */
-        Student[] L = new Student[n1];
-        Student[] R = new Student[n2];
+        Student[] leftTemp = new Student[n1];
+        Student[] rightTemp = new Student[n2];
 
         /*Copy data to temp arrays*/
-        System.arraycopy(arr, l, L, 0,n1);
+        System.arraycopy(array, Lpos, leftTemp, 0,n1);
 
         for(int j = 0; j < n2; ++j)
         {
-            R[j] = arr[m + 1 + j];
+            rightTemp[j] = array[Rpos + 1 + j];
         }
 
 
@@ -44,55 +38,53 @@ public class MSort {
         // Initial indexes of first and second subarrays
         int i = 0, j = 0;
 
-        // Initial index of merged subarry array
-        int k = l;
+        int mergedSubArray = Lpos;
         while (i < n1 && j < n2)
         {
-            if (L[i].avg <= R[j].avg)
+            if (leftTemp[i].avg <= rightTemp[j].avg)
             {
-                arr[k] = L[i];
+                array[mergedSubArray] = leftTemp[i];
                 i++;
             }
             else
             {
-                arr[k] = R[j];
+                array[mergedSubArray] = rightTemp[j];
                 j++;
             }
-            k++;
+            mergedSubArray++;
         }
 
-        /* Copy remaining elements of L[] if any */
+        /* Copy remaining elements of leftTemp[] if any */
         while (i < n1)
         {
-            arr[k] = L[i];
+            array[mergedSubArray] = leftTemp[i];
             i++;
-            k++;
+            mergedSubArray++;
         }
 
-        /* Copy remaining elements of R[] if any */
+        /* Copy remaining elements of rightTemp[] if any */
         while (j < n2)
         {
-            arr[k] = R[j];
+            array[mergedSubArray] = rightTemp[j];
             j++;
-            k++;
+            mergedSubArray++;
         }
     }
 
-
-    // Main function that sorts arr[l..r] using
-    // Merge()
-    static void sort(Student[] arr, int Left, int Right) {
-        int Center;
-        // Find the middle point
-        if (Left < Right) {
-            Center = (Left + Right) / 2;
+    // Function that sorts array[LeftToRight] using Merge()
+    static void sort(Student[] arr, int left, int right)
+    {
+        if (left < right)
+        {
+            // Find the center point
+            int center =left+ (right-left)/2;
 
             // Sort first and second halves
-            sort(arr, Left, Center);
-            sort(arr, Center + 1, Right);
+            sort(arr, left, center);
+            sort(arr, center + 1, right);
 
             // Merge the sorted halves
-            Merge(arr, Left, Center, Right);
+            merge(arr, left, center, right);
         }
     }
 //
@@ -114,7 +106,7 @@ public class MSort {
             double sum = 0;
             arr[i] = new Student();
             arr[i].name = input.next();
-            arr[i].surname = input.next();
+            arr[i].lastName = input.next();
             for (int j = 0; j < 4; j++) {
                 sum += input.nextInt();
             }
@@ -124,7 +116,7 @@ public class MSort {
         sort(arr, 0, n - 1);
 
         for (int j = n - 1; j >= n - m; j--) {
-            System.out.println(arr[j].name + " " + arr[j].surname + " " + arr[j].avg);
+            System.out.println(arr[j].name + " " + arr[j].lastName + " " + arr[j].avg);
         }
 
     }
