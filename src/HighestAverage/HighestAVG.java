@@ -1,3 +1,4 @@
+//Brand BINF-A
 package HighestAverage;
 
 import java.util.Scanner;
@@ -11,9 +12,8 @@ public class HighestAVG
         double avg;
     }
 
-    // Merges two subarrays of array[].
-    // First subarray is array[Lpos..Rpos]
-    // Second subarray is array[Rpos+1..RightEnd]
+    // First subArray is arr[l TO Rpos]
+    // Second subArray is arr[Rpos+1 TO RightEnd]
     static void merge(Student[] array, int Lpos, int Rpos, int RightEnd)
     {
         // Find sizes of two subarrays to be merged

@@ -15,8 +15,8 @@ public class Merging
     }
 
 
-    // First subarray is arr[l..Rpos]
-    // Second subarray is arr[Rpos+1..RightEnd]
+    // First subArray is arr[l TO Rpos]
+    // Second subArray is arr[Rpos+1 TO RightEnd]
     static void Merge(Donor[] array, int Lpos, int Rpos, int RightEnd)
     {
         // Find sizes of two subArrays to be merged
@@ -38,8 +38,8 @@ public class Merging
 
         //Merge the temporary arrays
 
-        //Initial indexes of first and second subArrays
-        int i = 0, j = 0;
+
+        int i = 0, j = 0;  //Initial indexes of first and second subArrays
 
 
         int mergedSubarray = Lpos;

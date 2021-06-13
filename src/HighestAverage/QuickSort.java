@@ -1,3 +1,4 @@
+//Brand BINF-A
 package HighestAverage;
 
 import java.util.Scanner;

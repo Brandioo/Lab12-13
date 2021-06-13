@@ -1,6 +1,5 @@
+//Brand BINF-A
 package StudentAveragesExercise.MergeSort;
-
-import HighestAverage.HighestAVG;
 
 import java.util.*;
 
@@ -11,9 +10,9 @@ public class MSort {
         double avg;
     }
 
-    // Merges two subarrays of array[].
-    // First subarray is array[Lpos..Rpos]
-    // Second subarray is array[Rpos+1..RightEnd]
+
+    // First subArray is arr[l To Rpos]
+    // Second subArray is arr[Rpos+1 To RightEnd]
     static void merge(Student[] array, int Lpos, int Rpos, int RightEnd)
     {
         // Find sizes of two subarrays to be merged
