@@ -61,7 +61,8 @@ public class QuickSort {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int n = input.nextInt(), m = input.nextInt();
+        int n = input.nextInt();
+        int m = input.nextInt();
         Student[] arr = new Student[n];
 
         for (int i = 0; i < n; i++) {
@@ -77,6 +78,7 @@ public class QuickSort {
 
         sort(arr, 0, n - 1);
 
+        //Print m students
         for (int j = n - 1; j >= n - m; j--) {
             System.out.println(arr[j].name + " " + arr[j].lastName + " " + arr[j].average);
         }

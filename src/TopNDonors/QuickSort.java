@@ -70,6 +70,7 @@ public class QuickSort {
 
         quickSort(array, 0, n - 1);
 
+        //Print m students
         for (int j = n - 1; j >= n - m; j--) {
             System.out.println(array[j].name + " " + array[j].surname + " " + array[j].donated);
         }
